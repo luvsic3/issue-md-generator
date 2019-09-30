@@ -7,7 +7,8 @@
   "module": "dist/issue-md-generator.es5.js",
   "typings": "dist/types/issue-md-generator.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "bin"
   ],
   "author": "youruichao <youruichao@souche.com>",
   "repository": {
