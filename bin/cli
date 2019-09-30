@@ -1,0 +1,37 @@
+#!/usr/bin/env node
+
+const generate = require('../dist/issue-md-generator.umd')
+const pkg = require('../package.json')
+const program = require('commander')
+const fs = require('fs')
+const ora = require('ora')
+
+const spinner = ora('Loading unicorns').start()
+
+spinner.color = 'yellow'
+spinner.text = 'Loading github issues'
+
+program
+  .version(pkg.version)
+  .option('-u, --url <string>', 'url of your github repository')
+  // .option('-t, --token <string>', 'your github acess token')
+  .parse(process.argv)
+
+async function writeMarkdown() {
+  if (
+    program.url
+    //  && program.token
+  ) {
+    const list = await generate({
+      link: program.url
+      // accessToken: program.token
+    })
+    fs.writeFile('./tmp.md', list, err => {
+      spinner.stop()
+      if (err) throw err
+    })
+  }
+}
+
+// tslint:disable-next-line: no-floating-promises
+writeMarkdown()
