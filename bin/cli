@@ -4,8 +4,8 @@ const generate = require('../dist/issue-md-generator.umd')
 const pkg = require('../package.json')
 const program = require('commander')
 const fs = require('fs')
-const chalk = require('chalk')
 const ora = require('ora')
+const path = require('path')
 
 program
   .version(pkg.version)
@@ -23,7 +23,7 @@ async function writeMarkdown() {
       link: program.url
       // accessToken: program.token
     })
-    fs.writeFile('./tmp.md', list, err => {
+    fs.writeFile(path.join(process.cwd(), './tmp.md'), list, err => {
       spinner.succeed('Generate successfully, see tmp.md file in your current path')
       if (err) throw err
     })
