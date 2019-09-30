@@ -1,6 +1,6 @@
 {
   "name": "issue-md-generator",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "",
   "keywords": [],
   "main": "dist/issue-md-generator.umd.js",
